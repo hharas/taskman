@@ -1,6 +1,8 @@
 # `taskman`
 Simple terminal-based task manager
 
+![Demo of taskman](demo.gif)
+
 ## Why?
 
 I actually learned a little bit of C recently and I tried to put my knowledge to the test and I couldn't even write this simple task manager, so I deleted the whole directory and `cargo new --bin taskman`'d the project as a form of surrender.
