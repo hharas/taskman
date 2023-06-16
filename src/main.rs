@@ -8,7 +8,11 @@ use std::{
 use structopt::StructOpt;
 
 #[derive(Debug, StructOpt)]
-#[structopt(name = "taskman", version = "0.1.0", about = "Simple terminal-based task manager")]
+#[structopt(
+    name = "taskman",
+    version = "0.1.1",
+    about = "Simple terminal-based task manager"
+)]
 enum Command {
     #[structopt(name = "add", about = "Add a new task")]
     Add {
@@ -27,7 +31,11 @@ enum Command {
 }
 
 #[derive(Debug, StructOpt)]
-#[structopt(name = "taskman", version = "0.1.0", about = "Simple terminal-based task manager")]
+#[structopt(
+    name = "taskman",
+    version = "0.1.1",
+    about = "Simple terminal-based task manager"
+)]
 struct Opt {
     #[structopt(subcommand)]
     command: Command,
@@ -45,7 +53,7 @@ fn main() {
     let opt = Opt::from_args();
 
     if opt.version {
-        println!("taskman version 1.0");
+        println!("taskman version 0.1.1");
         return;
     }
 
@@ -246,7 +254,6 @@ fn main() {
                             exit(1);
                         }
                     }
-                    
                 }
             } else if (!all && id.is_none()) || (all && id.is_some()) {
                 println!("Either provide the --all flag or the <id> argument.");
