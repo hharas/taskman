@@ -104,13 +104,9 @@ fn main() {
                 None => 1,
             };
 
-            let formatted_task = format!("{}. {}", task_id, task_content);
-
             match OpenOptions::new().append(true).open(&taskfile_path) {
                 Ok(mut taskfile) => match writeln!(taskfile, "{}", formatted_task) {
-                    Ok(_) => {
-                        println!("Added task: {}", task_content);
-                    }
+                    Ok(_) => {}
 
                     Err(error) => {
                         println!("ERROR[7]: {error}");
@@ -167,7 +163,6 @@ fn main() {
             }
 
             if !viewed_tasks.is_empty() {
-                println!("Current tasks:");
                 for viewed_task in viewed_tasks {
                     println!("{}. {}", viewed_task.id, viewed_task.content);
                 }
@@ -249,10 +244,7 @@ fn main() {
                             exit(1);
                         }
                     }
-
-                    if !tasks.iter().any(|task| task.id == id) {
-                        println!("Removed task no. {} successfully.", id);
-                    }
+                    
                 }
             } else if (!all && id.is_none()) || (all && id.is_some()) {
                 println!("Either provide the --all flag or the <id> argument.");
@@ -263,9 +255,7 @@ fn main() {
                     .truncate(true)
                     .open(&taskfile_path)
                 {
-                    Ok(_) => {
-                        println!("Removed all tasks.");
-                    }
+                    Ok(_) => {}
 
                     Err(error) => {
                         println!("ERROR[13]: {error}");
