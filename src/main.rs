@@ -104,6 +104,8 @@ fn main() {
                 None => 1,
             };
 
+            let formatted_task = format!("{}. {}", task_id, task_content);
+
             match OpenOptions::new().append(true).open(&taskfile_path) {
                 Ok(mut taskfile) => match writeln!(taskfile, "{}", formatted_task) {
                     Ok(_) => {}
